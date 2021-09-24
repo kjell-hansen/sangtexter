@@ -3,6 +3,7 @@ declare (strict_types=1);
 
 // Inkludera filer
 require_once 'routes.php';
+require_once 'include/Michelf/Markdown.inc.php';
 $settings = include 'include/settings.php';
 
 // Kontrollera settings
@@ -29,9 +30,8 @@ if ($routeInfo['status'] !== 200) {
         // Generera innehåll!
         $content = file_get_contents($routeInfo['path']);
         if (substr($routeInfo['path'], strrpos($routeInfo['path'], '.')) === '.md') {
-            echo "<pre>";
-            echo $content;
-            echo "</pre>";
+            $parser=new Michelf\Markdown();
+            echo $parser->transform($content);
         } else {
             echo $content;
         }
