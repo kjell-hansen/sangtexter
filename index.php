@@ -4,11 +4,15 @@ declare (strict_types=1);
 // Inkludera filer
 require_once 'routes.php';
 require_once 'include/Michelf/Markdown.inc.php';
+require_once 'include/Menu.php';
 $settings = include 'include/settings.php';
+$baseDir= substr($_SERVER['SCRIPT_NAME'], 0,strrpos($_SERVER['SCRIPT_NAME'], "/"));
 
 // Kontrollera settings
 if (isset($settings['rotmapp']) && is_dir($settings['rotmapp'])) {
     $routeInfo = getRoutes();
+    $menu=new Menu($baseDir);
+    $menuItems= $menu->getMenu($settings['rotmapp']);
 } else {
     $routeInfo = ['path' => 'content/506.html', 'status' => 506, 'title' => 'Felaktig konfigurering'];
 }
@@ -24,14 +28,14 @@ if ($routeInfo['status'] !== 200) {
     <head>
         <meta charset="UTF-8">
         <title>Sångtexter <?php $routeInfo['title'] != '' ? print " - $routeInfo[title]" : print ''; ?></title>
-        <link href="css/main.css" rel="stylesheet" type="text/css"/>
+        <link href="<?= $baseDir;?>/css/main.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <header>
             Sångtexter
         </header>
         <nav>
-            <a href="./">Hem</a>
+            <?= $menu->parseArray($menuItems); ?>
         </nav>
         <main>
         <?php

@@ -8,8 +8,9 @@ html {
 body {
     margin: 0;
     height: 100%;
+    overflow: scroll;
     display: grid;
-    grid-template-columns: 80px auto;
+    grid-template-columns: 250px auto;
     grid-template-rows: 200px auto 50px;
     grid-template-areas:
         'header header'
@@ -23,6 +24,7 @@ header {
 nav {
     grid-area:nav;
     border: 1px solid green;
+    overflow: scroll;
 }
 main {
     grid-area:main;
@@ -32,4 +34,7 @@ main {
 footer {
     grid-area:footer;
     border: 1px solid red;
+    vertical-align: bottom;
+    margin: auto;
+    font-size: small;
 }
