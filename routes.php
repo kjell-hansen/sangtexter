@@ -1,11 +1,17 @@
 <?php
 
 declare (strict_types=1);
-
+/**
+ * Hämtar rutter till sångtexter och/eller annat innehåll
+ * @return array
+ */
 function getRoutes(): array {
+    // Ta hand om adressen
     $request = $_SERVER['REQUEST_URI'];
-
-    switch (subst($request, 8)) {
+    // Aktuell mapp ska filtreras bort
+    $path = basename(__DIR__);
+    
+    switch (substr($request, mb_strlen($path)+1)) {
         case '/' :
         case '' :
             return ['path' => 'content/main.md', 'status' => 200, 'title' => 'Startsida'];
