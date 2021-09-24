@@ -24,8 +24,16 @@ if ($routeInfo['status'] !== 200) {
     <head>
         <meta charset="UTF-8">
         <title>Sångtexter <?php $routeInfo['title'] != '' ? print " - $routeInfo[title]" : print ''; ?></title>
+        <link href="css/main.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <header>
+            Sångtexter
+        </header>
+        <nav>
+            <a href="./">Hem</a>
+        </nav>
+        <main>
         <?php
         // Generera innehåll!
         $content = file_get_contents($routeInfo['path']);
@@ -36,5 +44,9 @@ if ($routeInfo['status'] !== 200) {
             echo $content;
         }
         ?>
+        </main>
+        <footer>
+            &copy; Kjell Hansen 2021
+        </footer>
     </body>
 </html>

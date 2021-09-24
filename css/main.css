@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+}
+html {
+    height: 100%;
+    margin: 0;
+}
+body {
+    margin: 0;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 80px auto;
+    grid-template-rows: 200px auto 50px;
+    grid-template-areas:
+        'header header'
+        'nav main'
+        'footer footer';
+}
+header {
+    grid-area:header;
+    border: 1px solid blue;
+}
+nav {
+    grid-area:nav;
+    border: 1px solid green;
+}
+main {
+    grid-area:main;
+    border: 1px solid yellow;
+    overflow: auto;
+}
+footer {
+    grid-area:footer;
+    border: 1px solid red;
+}
