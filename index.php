@@ -3,7 +3,7 @@ declare (strict_types=1);
 
 // Inkludera filer
 require_once 'routes.php';
-$settings = include 'settings.php';
+$settings = include 'include/settings.php';
 
 // Kontrollera settings
 if (isset($settings['rotmapp']) && is_dir($settings['rotmapp'])) {

@@ -10,7 +10,7 @@ function getRoutes(): array {
     $request = $_SERVER['REQUEST_URI'];
     // Aktuell mapp ska filtreras bort
     $path = basename(__DIR__);
-    
+
     switch (substr($request, mb_strlen($path)+1)) {
         case '/' :
         case '' :
