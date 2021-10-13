@@ -55,7 +55,7 @@ class Menu {
                     $menuItem->text = $item;
                     if (file_exists("content/{$item}.md")) {
                         $menuItem->url = "$this->baseDir/$item";
-                    } 
+                    }
                     $menuItem->subMenu = $this->readPath("$path/$item", "$relPath./$item");
                     $subMenu[] = $menuItem;
                 }
@@ -67,11 +67,19 @@ class Menu {
     public function parseArray(array $menu): string {
         $retur = "<ul class='nav'>";
         foreach ($menu as $item) {
-            $retur .= "<li>";
-            if (isset($item->url)) {
-                $retur .= "<a href='$item->url'>$item->text</a>";
+            if ($item->text === "-") {
+                $retur .= "<hr>";
+                continue;
+            }
+            if (isset($item->subMenu)) {
+                $retur .= "<li><img src='$this->baseDir/images/mapp.png' height=15>";
             } else {
-                $retur .= "$item->text";
+                $retur .= "<li><img src='$this->baseDir/images/mapp.png' height=15>";
+            }
+            if (isset($item->url)) {
+                $retur .= " <a href='$item->url'>$item->text</a>";
+            } else {
+                $retur .= " $item->text";
             }
             if (isset($item->subMenu)) {
                 $retur .= $this->parseArray($item->subMenu);

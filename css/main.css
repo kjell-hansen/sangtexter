@@ -11,7 +11,7 @@ body {
     overflow: scroll;
     display: grid;
     grid-template-columns: 250px auto;
-    grid-template-rows: 200px auto 50px;
+    grid-template-rows: auto auto 50px;
     grid-template-areas:
         'header header'
         'nav main'
@@ -19,22 +19,35 @@ body {
 }
 header {
     grid-area:header;
-    border: 1px solid blue;
+    font-family: Monoton;
+    font-size: 5em;
+    text-align: center;
 }
 nav {
     grid-area:nav;
-    border: 1px solid green;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 main {
+    margin: 1em;
     grid-area:main;
-    border: 1px solid yellow;
     overflow: auto;
 }
 footer {
     grid-area:footer;
-    border: 1px solid red;
     vertical-align: bottom;
     margin: auto;
     font-size: small;
+}
+ul {
+    list-style: none inside;
+    padding-left: 1em;
+    margin-left: 0;
+}
+ul li a:link, ul li a:visited{
+    color: grey;
+}
+
+ul hr {
+    margin-left: -2em;
+    border-style: groove;
 }
