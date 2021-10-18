@@ -23,4 +23,3 @@ class Settings{
         file_put_contents(self::settingsfile, $fileContent);
     }
 }
-    // 'rotmapp' => 'C:/Users/kjellh/OneDrive - Ålands Gymnasium/Git/gitkurs/'
