@@ -2,10 +2,10 @@
 declare (strict_types=1);
 
 // Inkludera filer
-require_once 'routes.php';
+require_once 'include/Settings.php';
 require_once 'include/Menu.php';
 require_once 'include/Content.php';
-require_once 'include/Settings.php';
+require_once 'routes.php';
 
 $settings= Settings::getSettings();
 
@@ -40,7 +40,7 @@ if ($routeInfo['status'] !== 200) {
         <?php
         if (isset($menu)) {
             echo "<nav>\n";
-            $menu->parseArray($menuItems);
+            echo $menu->parseArray($menuItems);
             echo "\n</nav>";
         }
         ?>
