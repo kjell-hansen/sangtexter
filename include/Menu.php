@@ -48,11 +48,13 @@ class Menu {
                 }
                 $menuItem->text = $itemName;
                 $menuItem->url = "$relPath/$item";
+                $menuItem->class = "file";
                 $subMenu[] = $menuItem;
             } else {
                 if (substr($item, 0, 1) !== ".") {
                     $menuItem = new stdClass();
                     $menuItem->text = $item;
+                    $menuItem->class = "dir";
                     if (file_exists("content/{$item}.md")) {
                         $menuItem->url = "$this->baseDir/$item";
                     }
@@ -71,10 +73,13 @@ class Menu {
                 $retur .= "<hr>";
                 continue;
             }
-            if (isset($item->subMenu)) {
+            if (isset($item->class) && $item->class==='dir') {
                 $retur .= "<li><img src='$this->baseDir/images/mapp.png' height=15>";
+            } elseif (isset($item->class) && $item->class==='file') {
+                $retur .= "<li><img src='$this->baseDir/images/song.png' height=15>";
             } else {
-                $retur .= "<li><img src='$this->baseDir/images/mapp.png' height=15>";
+                $retur .= "<li>";
+                
             }
             if (isset($item->url)) {
                 $retur .= " <a href='$item->url'>$item->text</a>";

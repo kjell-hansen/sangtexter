@@ -10,25 +10,27 @@ body {
     height: 100%;
     overflow: scroll;
     display: grid;
+ //   justify-content: start;
     grid-template-columns: 250px auto;
     grid-template-rows: auto auto 50px;
     grid-template-areas:
         'header header'
         'nav main'
-        'footer footer';
+        'footer footer';        
 }
 header {
     grid-area:header;
     font-family: Monoton;
-    font-size: 5em;
+    font-size: 90px;
     text-align: center;
 }
 nav {
     grid-area:nav;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 main {
     margin: 1em;
+    margin-right: 0;
     grid-area:main;
     overflow: auto;
 }
@@ -38,16 +40,56 @@ footer {
     margin: auto;
     font-size: small;
 }
-ul {
-    list-style: none inside;
-    padding-left: 1em;
-    margin-left: 0;
-}
-ul li a:link, ul li a:visited{
+nav ul li a:link,nav ul li a:visited{
     color: grey;
+    text-decoration: none;
 }
 
-ul hr {
+nav ul hr {
     margin-left: -2em;
     border-style: groove;
+}
+
+@media all and (max-width: 900px)  {
+    body {
+        grid-template-columns: auto;
+        grid-template-rows: 12vw auto auto 50px;
+        grid-template-areas:
+            'header'
+            'nav'
+            'main'
+            'footer';        
+    }
+    header {
+        font-size: 10vw;
+    }
+    nav ul {
+        list-style: none inside;
+        padding-left: 1em;
+        margin-left: 0;
+        display: inline-block;
+    }
+    nav li {
+        display: inline-block;
+        padding-right: 5px;
+    }
+    nav ul li a:link,nav ul li a:visited{
+        color: grey;
+        text-decoration: none;
+    }
+    ul li:hover>ul  {
+        display: block;
+    }
+    nav ul hr {
+        display: none;
+    }
+    ul li ul  {
+        display: none;
+        position: absolute;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    }
+    ul li ul li {
+        display: block;
+        background-color: white;
+    }
 }
