@@ -12,7 +12,7 @@ $settings= Settings::getSettings();
 $baseDir = substr($_SERVER['SCRIPT_NAME'], 0, strrpos($_SERVER['SCRIPT_NAME'], "/"));
 
 // Kontrollera settings
-if (isset($settings->rotmapp) && is_dir($settings->rotmapp)) {
+if (isset($settings->rotmapp) && is_dir($settings->rotmapp) && substr($settings->rotmapp, -1)==='\\') {
     $routeInfo = getRoutes($settings->rotmapp);
     $menu = new Menu($baseDir);
     $menuItems = $menu->getMenu($settings->rotmapp);
@@ -48,7 +48,7 @@ if ($routeInfo['status'] !== 200) {
             <?= getContent($routeInfo['path']); ?>
         </main>
         <footer>
-            &copy; Kjell Hansen 2021
+            &copy; Kjell Hansen 2021 -- <?= date("Y"); ?>
         </footer>
     </body>
 </html>
