@@ -7,12 +7,12 @@ require_once 'include/Menu.php';
 require_once 'include/Content.php';
 require_once 'routes.php';
 
-$settings= Settings::getSettings();
+$settings = Settings::getSettings();
 
 $baseDir = substr($_SERVER['SCRIPT_NAME'], 0, strrpos($_SERVER['SCRIPT_NAME'], "/"));
 
 // Kontrollera settings
-if (isset($settings->rotmapp) && is_dir($settings->rotmapp) && substr($settings->rotmapp, -1)==='\\') {
+if (isset($settings->rotmapp) && is_dir($settings->rotmapp) && substr($settings->rotmapp, -1) === '\\') {
     $routeInfo = getRoutes($settings->rotmapp);
     $menu = new Menu($baseDir);
     $menuItems = $menu->getMenu($settings->rotmapp);

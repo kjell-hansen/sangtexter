@@ -5,10 +5,10 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     // Det har postats något till sidan
     // För tillfället kan det bara vara sökvägen till sångtexterna
     $sokvag = filter_input(INPUT_POST, "rotmapp", FILTER_SANITIZE_URL);
-    if (is_dir($sokvag )) {
+    if (is_dir($sokvag)) {
         Settings::saveSettings('rotmapp', $sokvag);
     }
-    $path=  ($_SERVER['REQUEST_URI']);
+    $path = ($_SERVER['REQUEST_URI']);
     header("Location: $path");
     exit();
 }

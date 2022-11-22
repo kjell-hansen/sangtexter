@@ -2,12 +2,18 @@
 
 declare (strict_types=1);
 
-// Inställningar för siten
-
+/**
+ * Inställningar för siten
+ */
 class Settings {
 
     private const settingsfile = __DIR__ . "/settings.json";
 
+    /**
+     * Hämtar alla inställningar i settingsfilen om den finns
+     * annars returneras en tom standardklass
+     * @return \stdClass
+     */
     static function getSettings(): \stdClass {
         if (is_file(self::settingsfile)) {
             $fileContent = file_get_contents(self::settingsfile);
@@ -19,6 +25,11 @@ class Settings {
         return $retur;
     }
 
+    /**
+     * Sparar inställningar till settings-filen
+     * @param string $key Inställning
+     * @param string $value Värde
+     */
     static function saveSettings(string $key, string $value) {
         $content = self::getSettings();
         $content->$key = $value;
